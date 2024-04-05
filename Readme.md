@@ -65,6 +65,6 @@ Tutorial and more details on using Mail Merge: https://pbpython.com/python-word-
 
 `python3 db-to-pdf-export.py`
 
-Output located in the `output` folder (empty folders must exist when running):
+Output located in the `output` folder (created at execution):
 * `output/docx` - intermediary filled-in docx output, using the Word template
 * `output/pdf` - final PDF output

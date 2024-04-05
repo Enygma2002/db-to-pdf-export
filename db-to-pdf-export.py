@@ -23,6 +23,12 @@ cursor = conn.cursor()
 cursor.execute("SELECT * FROM employees")
 data = cursor.fetchall()
 
+# Create output directories
+output_docx_dir = Path.cwd() / 'output' / 'docx'
+output_docx_dir.mkdir(parents=True, exist_ok=True)
+output_pdf_dir = Path.cwd() / 'output' / 'pdf'
+output_pdf_dir.mkdir(parents=True, exist_ok=True)
+
 # Loop through each row of data
 for i, row in enumerate(data):
     # Create a Word document from the template
@@ -41,10 +47,10 @@ for i, row in enumerate(data):
     doc.merge_pages([row_dict])
 
     # Save the populated Word document
-    doc_output = Path.cwd() / 'output' / 'docx' / f'temp_document_{i}.docx'
+    doc_output = output_docx_dir / f'temp_document_{i}.docx'
     doc.write(doc_output)
 
-    pdf_output = Path.cwd() / 'output' / 'pdf' / f'output_{i}.pdf'
+    pdf_output = output_pdf_dir / f'output_{i}.pdf'
 
     ## Use docx2pdf, requires manual attention on mac. Might work on Windows for free.
     convert(doc_output, pdf_output)
@@ -62,7 +68,7 @@ for i, row in enumerate(data):
         print("Libreoffice is not installed. Use 'brew install --cask libreoffice'.")
         exit(1)
 
-    output = subprocess.check_output(['soffice', '--convert-to', 'pdf', doc_output, '--outdir', pdf_output.parent])
+    output = subprocess.check_output(['soffice', '--convert-to', 'pdf', doc_output, '--outdir', output_pdf_dir])
     print(output)
     '''
 
