@@ -2,11 +2,18 @@ from mailmerge import MailMerge
 import sqlite3
 from pathlib import Path
 
+# Using docx2pdf
 from docx2pdf import convert
 
+# Alternative: If using Aspose
+'''
 import aspose.words as aw
+'''
 
+# Alternative: If using LibreOffice
+'''
 import subprocess
+'''
 
 # Connect to your SQLite database
 conn = sqlite3.connect('employees.sqlite')
@@ -39,7 +46,7 @@ for i, row in enumerate(data):
 
     pdf_output = Path.cwd() / 'output' / 'pdf' / f'output_{i}.pdf'
 
-    ## Alternative: Use docx2pdf, requires manual attention on mac. Might work on Windows for free.
+    ## Use docx2pdf, requires manual attention on mac. Might work on Windows for free.
     convert(doc_output, pdf_output)
 
     ## Alternative: Use Aspose, requires 1200$ license to get rid of watermarks.
@@ -48,7 +55,7 @@ for i, row in enumerate(data):
     # doc2.save(pdf_output)
 '''
 
-    ## Use LibreOffice with good result and free, requires installation.
+    ## Alternative: Use LibreOffice with good result and free, requires installation.
 '''
     rc = subprocess.call(['which', 'soffice'])
     if rc != 0:
