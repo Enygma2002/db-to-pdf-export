@@ -1,6 +1,6 @@
 # Description
 
-Export data from an SQL DB (e.g. sqlite), run it through a Word template and export each result as PDF.
+Python script that exports data from an SQL DB (e.g. sqlite), runs it through a Word template and exports each result as PDF.
 
 # Database
 
