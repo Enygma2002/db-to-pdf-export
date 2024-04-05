@@ -1,6 +1,5 @@
 .DS_Store
 *.iml
 *.idea
-.venv
 output/docx/*
 output/pdf/*
