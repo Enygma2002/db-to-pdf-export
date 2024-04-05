@@ -1,3 +1,7 @@
+# Description
+
+Export data from an SQL DB (e.g. sqlite), run it through a Word template and export each result as PDF.
+
 # Database
 
 1. Create a DB
