@@ -50,21 +50,21 @@ for i, row in enumerate(data):
     convert(doc_output, pdf_output)
 
     ## Alternative: Use Aspose, requires 1200$ license to get rid of watermarks.
-'''
+    '''
     # doc2 = aw.Document(doc_output)
     # doc2.save(pdf_output)
-'''
+    '''
 
     ## Alternative: Use LibreOffice with good result and free, requires installation.
-'''
+    '''
     rc = subprocess.call(['which', 'soffice'])
     if rc != 0:
         print("Libreoffice is not installed. Use 'brew install --cask libreoffice'.")
         exit(1)
 
-    output = subprocess.check_output(['soffice', '--convert-to', 'pdf', doc_output, '--outdir', 'pdf'])
+    output = subprocess.check_output(['soffice', '--convert-to', 'pdf', doc_output, '--outdir', pdf_output.parent])
     print(output)
-'''
+    '''
 
 # Close the database connection
 conn.close()
